@@ -57,15 +57,37 @@ python modify_bvh.py --filename path_to_generated_bvh_file.bvh
 
 **Details**: The final step in the pipeline, this script adjusts the BVH files by renaming joints and adding end sites. This is crucial for ensuring the BVH files conform to expected standards in animation and motion analysis software.
 
+# Dance Synthesis Model
+
+Model to Synthesis data based upon Key Frames. 
+(1) Define skeleton information in ./global_info; 
+(2) Put motion data(.bvh) in ./data; 
+(3) Modify training or test parameters in ./config.py.
+
+### For data preparation
+**Usage**:
+```bash
+python generate_data.py --dataset Cyprus --downsample 1
+```
+
+
+### For training
+**Usage**:
+```bash
+python train.py --train prediction --data_path data/Cyprus_out/
+```
+
+
+### For testing
+**Usage**:
+```bash
+python test.py --test prediction --data_path data/Cyprus_out/
+```
+
+# Algorithm for KeyFrames identification and plotting
+Coordinates.txt file that has coordinates information is updated in file provided.
+
 ## Additional Notes
 
 - Make sure all dependencies are installed before running the scripts. You may need libraries like `numpy`, `scipy`, and `argparse`.
 - Adjust file paths and configurations within each script according to your project directory structure and specific requirements.
-
-## License
-
-Specify the license under which this library is released, if applicable.
-
-## Contributing
-
-Contributions to the BVH Library are welcome. Please ensure to follow coding standards and submit pull requests for any enhancements.
